@@ -1,0 +1,49 @@
+﻿body {
+    font-family: Times New Roman, Tahoma, Verdana;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.addtableheader {
+    background: #D62F0D;
+    text-align: left;
+    padding: 10px 15px 10px 15px;
+    color: #ffffff;
+    font-size: 1.5em;
+    border: 1px solid #ff0000;
+}
+
+.tdrow1 {
+    background-color: #dddddd;
+    width: 300px;
+    padding: 5px 10px 5px 20px;
+    border: 1px solid #ff0000;
+    font-weight: bold;
+}
+
+.tdrow2 {
+    border: 1px solid #D62F0D;
+    padding: 4px 10px 4px 10px;
+}
+
+.textbox {
+    padding: 3px 10px 3px 10px;
+    width: 250px;
+}
+
+.Btn {
+    padding: 7px 10px 7px 10px;
+    background: #D62F0D;
+    border: 1px solid #D62F0D;
+    color: #ffffff;
+    font-weight: bold;
+}
+.table {
+    margin-left: auto;
+    margin-right: auto;
+}
+

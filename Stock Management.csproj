@@ -68,13 +68,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Category\category.aspx" />
-    <Content Include="css\style.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\prod.css" />
+    <Content Include="style.css" />
+    <Content Include="css\supplier.css" />
+    <Content Include="css\util.css" />
     <Content Include="Customer\customer.aspx" />
     <Content Include="Customer\viewcustomer.aspx" />
     <Content Include="Index.aspx" />
+    <Content Include="JS\cust_js.js" />
+    <Content Include="JS\jquery-1.11.2.min.js" />
+    <Content Include="JS\main.js" />
+    <Content Include="login.aspx" />
     <Content Include="Product\Addproduct.aspx" />
     <Content Include="Product\deleteproduct.aspx" />
     <Content Include="Product\editproduct.aspx" />
+    <Content Include="registration.aspx" />
     <Content Include="Supplier\Deletesupplier.aspx" />
     <Content Include="Supplier\EditSupplier.aspx" />
     <Content Include="Supplier\ListSupplier.aspx" />
@@ -110,6 +119,13 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Product\Addproduct.aspx.cs">
       <DependentUpon>Addproduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -132,6 +148,13 @@
       <DependentUpon>editproduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="registration.aspx.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registration.aspx.designer.cs">
+      <DependentUpon>registration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Supplier\Deletesupplier.aspx.cs">
       <DependentUpon>Deletesupplier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

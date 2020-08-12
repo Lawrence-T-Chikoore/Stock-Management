@@ -5,108 +5,177 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-	<link href="../css/style.css" rel="stylesheet" type="text/css" />
+	 <link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="../css/supplier.css" rel="stylesheet" type="text/css" />
+	 <style type="text/css">
+      * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    font-family: Raleway-Regular, sans-serif;
+}
+    .navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+}
+
+    /* Links inside the navbar */
+	     .navbar a {
+	         float: left;
+	         font-size: 16px;
+	         color: white;
+	         text-align: center;
+	         padding: 14px 16px;
+	         text-decoration: none;
+	     }
+
+	     /* The dropdown container */
+	     .dropdown {
+	         float: left;
+	         overflow: hidden;
+	     }
+
+	         /* Dropdown button */
+	         .dropdown .dropbtn {
+	             font-size: 16px;
+	             border: none;
+	             outline: none;
+	             color: white;
+	             padding: 14px 16px;
+	             background-color: inherit;
+	             font-family: inherit; /* Important for vertical align on mobile phones */
+	             margin: 0; /* Important for vertical align on mobile phones */
+	         }
+
+	         /* Add a red background color to navbar links on hover */
+	         .navbar a:hover, .dropdown:hover .dropbtn {
+	             background-color: red;
+	         }
+
+	     /* Dropdown content (hidden by default) */
+	     .dropdown-content {
+	         display: none;
+	         position: absolute;
+	         background-color: #f9f9f9;
+	         min-width: 160px;
+	         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	         z-index: 1;
+	     }
+
+	         /* Links inside the dropdown */
+	         .dropdown-content a {
+	             float: none;
+	             color: black;
+	             padding: 12px 16px;
+	             text-decoration: none;
+	             display: block;
+	             text-align: left;
+	         }
+
+	             /* Add a grey background color to dropdown links on hover */
+	             .dropdown-content a:hover {
+	                 background-color: #ddd;
+	             }
+
+	     /* Show the dropdown menu on hover */
+	     .dropdown:hover .dropdown-content {
+	         display: block;
+	     }
+
+	  .button {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: red;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+	     table.center {
+	         margin-left: auto;
+	         margin-right: auto;
+	         width: 70%;
+	     }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
           <div class="header">
-        <h1>Stock Management</h1>
+        <div class="navbar">
+  <a href="#home">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn">Customers
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Customer/Customer.aspx">Customer</a>
+      <a href="/Customer/viewUser.aspx">View Customers</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Suppliers
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Supplier/Newsupplier.aspx">New Supplier</a>
+      <a href="/Supplier/EditSupplier.aspx">Edit Supplier</a>
+      <a href="/Supplier/ListSupplier.aspx">List Suppliers</a>
+      <a href="/Supplier/Deletesupplier.aspx">Delete Supplier</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Products
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Product/Addprodut.aspx">New Product</a>
+      <a href="/Product/editprodut.aspx">Edit Product</a>
+       <a href="/Product/deleteprodut.aspx">Delete Product</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Category
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Category/category.aspx">Category</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Reports
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Customer Reports</a>
+      <a href="#">Product Report</a>
+     
+    </div>
+  </div>
+ <div class="login-container">
+     <asp:Button ID="btn" runat="server" Text="Logout" CssClass="button" />
+     
+</div>
         </div>
         
-        <div class="container">
-           <nav>
-		<ul class="mcd-menu">
-            <li>
-				<a href="" class="active">
-					<i class="fa fa-edit"></i>
-					<strong>Home</strong>
-					
-				</a>
-			</li>
-			<li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Suppliers</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>New Supplier</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Edit Supplier</a>
-					</li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Delete Supplier</a></li>
-					<li><a href="#"><i class="fa fa-certificate"></i>Dealer List</a></li>
-				</ul>
-			</li>
-            <li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Products</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>New Product</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Edit Product</a>
-					</li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Delete Product</a></li>
-				</ul>
-			</li>
-              <li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Customers</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>Customers</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>View Customer</a>
-					</li>
-					
-				</ul>
-			</li>
-            	<li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Category</strong>
-				</a>
-                    <ul>
-					<li><a href="#"><i class="fa fa-globe"></i>Products</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Suppliers</a>
-					</li>
-					
-				</ul>
-				
-			</li>
-            
-            
-			<li>
-				<a href="">
-					<i class="fa fa-picture-o"></i>
-					<strong>Reports</strong>
-				</a>
-			</li>
-			
-		</ul>
-	</nav>
-
-        </div>
-        
-        <div id = "section">
-
-
-
-
-<div style="padding:10px;">
-<table class="addtable">
- <tr>
+ <table class="center">
+  <tr>
+    <tr>
   <th colspan="3" class="addtableheader">Dealer Details : </th>
  </tr>
  <tr>
   <td class="tdrow1">Dearler ID : </td>
   <td class="tdrow2">
-      <asp:TextBox ID="did" runat="server" CssClass="textbox"></asp:TextBox>
-      &nbsp;&nbsp;&nbsp;( example : Dealer ID should be : DL456 )</td>
+      <asp:TextBox ID="did" runat="server" CssClass="textbox"></asp:TextBox></td>
  </tr>
  <tr>
   <td class="tdrow1">Dearler Name : </td>
@@ -115,7 +184,7 @@
      </td>
  </tr>
  <tr>
-  <th colspan="3" style="background:#D62F0D; text-align:left; padding:5px 15px 5px 15px; color:#ffffff; font-size:1.3em; border:1px solid #ff0000;">Contact : </th>
+  <th colspan="3" style="background:#D62F0D; text-align:left; padding:5px 15px 5px 15px; color:#ffffff; font-size:1.3em; border:1px solid #ff0000;">Contact Details : </th>
  </tr>
  <tr>
   <td class="tdrow1">Address : </td>
@@ -131,20 +200,7 @@
   <td class="tdrow1">Telephone : </td>
   <td class="tdrow2"><asp:TextBox ID="dtelephone" runat="server" CssClass="textbox"></asp:TextBox></td>
  </tr>
-
 </table>
-<div style="width:70%; padding-top:20px; text-align:center;">
-<asp:Button ID="Btn_Add_Dealer" runat="server" Text=" Add Dealer " CssClass="Btn" 
-        onclick="Btn_Add_Dealer_Click" />&nbsp;&nbsp;&nbsp;<asp:Button ID="Btn_Cancel" runat="server" Text=" Cancel " CssClass="Btn"/>
-</div>
-<asp:Label ID="lbldate" runat="server"></asp:Label>
-</div>
-
-        
-        </div>
-        
-        
-        </div>
     </form>
 </body>
 </html>

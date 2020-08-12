@@ -70,7 +70,7 @@ namespace Stock_Management.Product
         {
             SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
             SqlCommand cmd = new SqlCommand();
-            cmd = new SqlCommand("insert into Product(pro_id,prod_name,prod_comp_name,prod_manu_date,prod_manu_exp_date,prod_item_serial_no,prod_item_batch_no,prod_item_cost,prod_item_quantity,prod_item_categoryid,prod_item_dealerid)values(@pro_id,@prod_name,@prod_comp_name,@prod_manu_date,@prod_manu_exp_date,@prod_item_serial_no,@prod_item_batch_no,@prod_item_cost,@prod_item_quantity,@prod_item_categoryid,@prod_item_dealerid)", conn);
+            cmd = new SqlCommand("insert into Product(prod_id,prod_name,prod_comp_name,prod_manu_date,prod_manu_exp_date,prod_item_serial_no,prod_item_batch_no,prod_item_cost,prod_item_quantity,prod_item_categoryid,prod_item_dealerid)values(@prod_id,@prod_name,@prod_comp_name,@prod_manu_date,@prod_manu_exp_date,@prod_item_serial_no,@prod_item_batch_no,@prod_item_cost,@prod_item_quantity,@prod_item_categoryid,@prod_item_dealerid)", conn);
             cmd.Parameters.AddWithValue("@prod_id", txt_product_id.Text.Trim());
             cmd.Parameters.AddWithValue("@prod_name", txt_product_name.Text.Trim());
             cmd.Parameters.AddWithValue("@prod_comp_name", txt_prod_company_name.Text.Trim());
@@ -80,10 +80,10 @@ namespace Stock_Management.Product
             cmd.Parameters.AddWithValue("@prod_item_batch_no", txt_product_batch_number.Text.Trim());
             cmd.Parameters.AddWithValue("@prod_item_cost", txt_product_cost.Text.Trim());
             cmd.Parameters.AddWithValue("@prod_item_quantity", txt_product_quantity.Text.Trim());
-            cmd.Parameters.AddWithValue("@prod_item_category", ddl_product_category.SelectedValue.ToString());
+            cmd.Parameters.AddWithValue("@prod_item_categoryid", ddl_product_category.SelectedValue.ToString());
             cmd.Parameters.AddWithValue("@prod_item_dealerid", ddl_product_dealer.SelectedValue.ToString());
 
-            Response.Redirect("~/Product/EditProduct.aspx?ProdID=" + txt_product_id.Text.Trim());
+           
         
 
 

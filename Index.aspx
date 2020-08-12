@@ -5,100 +5,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-	 <link rel="stylesheet" href="css/style.css">
+	 <link href="style.css" rel="stylesheet" type="text/css" />
+   
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-          <div class="header">
-        <h1>Stock Management</h1>
-        </div>
-        
-        <div class="container">
-           <nav>
-		<ul class="mcd-menu">
-            <li>
-				<a href="" class="active">
-					<i class="fa fa-edit"></i>
-					<strong>Home</strong>
-					
-				</a>
-			</li>
-			<li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Suppliers</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>New Supplier</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Edit Supplier</a>
-					</li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Delete Supplier</a></li>
-					<li><a href="#"><i class="fa fa-certificate"></i>Dealer List</a></li>
-				</ul>
-			</li>
-            <li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Products</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>New Product</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Edit Product</a>
-					</li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Delete Product</a></li>
-				</ul>
-			</li>
-              <li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Customers</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>Customers</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>View Customer</a>
-					</li>
-					
-				</ul>
-			</li>
-            	<li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Category</strong>
-				</a>
-                    <ul>
-					<li><a href="#"><i class="fa fa-globe"></i>Products</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Suppliers</a>
-					</li>
-					
-				</ul>
-				
-			</li>
-            
-            
-			<li>
-				<a href="">
-					<i class="fa fa-picture-o"></i>
-					<strong>Reports</strong>
-				</a>
-			</li>
-			
-		</ul>
-	</nav>
-
-        </div>
-        
-        <div id = "section">
-
-        
-        </div>
-        
-        
-        </div>
+        <div class="navbar">
+  <a href="#home">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn">Customers
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Customer/Customer.aspx">Customer</a>
+      <a href="/Customer/viewUser.aspx">View Customers</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Suppliers
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Supplier/Newsupplier.aspx">New Supplier</a>
+      <a href="/Supplier/EditSupplier.aspx">Edit Supplier</a>
+      <a href="/Supplier/ListSupplier.aspx">List Suppliers</a>
+      <a href="/Supplier/Deletesupplier.aspx">Delete Supplier</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Products
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Product/Addprodut.aspx">New Product</a>
+      <a href="/Product/editprodut.aspx">Edit Product</a>
+       <a href="/Product/deleteprodut.aspx">Delete Product</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Category
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Category/category.aspx">Category</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Reports
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Customer Reports</a>
+      <a href="#">Product Report</a>
+     
+    </div>
+  </div>
+ <div class="login-container">
+     <asp:Button ID="btn" runat="server" Text="Logout" CssClass="button" />
+     
+</div>
     </form>
 </body>
 </html>

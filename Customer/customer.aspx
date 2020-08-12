@@ -5,97 +5,238 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-	<link href="../css/style.css" rel="stylesheet" type="text/css" />
+	
+      <style type="text/css">
+  .tbcust
+  {
+      border-collapse:collapse;
+      width:80%;
+  }  
+   .tbcust, .tbcust_th, .tbcust_td1, .tbcust_td2
+  {      
+      border:1px solid #6699cc;
+  }
+  .tbcust_th
+  {
+      background-color:#006699;
+      color:#ffffff;
+      font-size:1.6em;
+      font-weight:bold;
+      padding:7px 10px 7px 10px;      
+  }
+  .tbcust_th_sub
+  {
+      background-color:#800080;
+      color:#ffffff;
+      font-size:1.2em;
+      font-weight:bold;
+      padding:5px 10px 5px 10px;      
+  }
+  .tbcust_td1
+  {
+      background-color:#dddddd;
+      color:#333333;
+      padding:4px 8px;
+      width:120px;
+      vertical-align:middle;
+      text-align:right;
+  }
+  .tbcust_td2
+  {
+      padding:5px 10px 5px 10px;
+      width:250px;
+  }
+  .txt_cust_readOnly
+  {
+      padding:3px 8px;
+      width:220px;
+      background:#dddddd;
+  }
+  .txt_cust_regullar
+  {
+      padding:3px 8px;
+      width:220px;
+    }
+    .btn_submit
+    {
+        background:#006699;
+        color:#ffffff;
+        padding:8px 12px 8px 12px;
+        border:1px solid #006699;
+        margin:0px 50px 10px 500px;
+        position:fixed;
+        font-weight:bold;
+    }
+    * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    font-family: Raleway-Regular, sans-serif;
+}
+    .navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+}
+
+    /* Links inside the navbar */
+	     .navbar a {
+	         float: left;
+	         font-size: 16px;
+	         color: white;
+	         text-align: center;
+	         padding: 14px 16px;
+	         text-decoration: none;
+	     }
+
+	     /* The dropdown container */
+	     .dropdown {
+	         float: left;
+	         overflow: hidden;
+	     }
+
+	         /* Dropdown button */
+	         .dropdown .dropbtn {
+	             font-size: 16px;
+	             border: none;
+	             outline: none;
+	             color: white;
+	             padding: 14px 16px;
+	             background-color: inherit;
+	             font-family: inherit; /* Important for vertical align on mobile phones */
+	             margin: 0; /* Important for vertical align on mobile phones */
+	         }
+
+	         /* Add a red background color to navbar links on hover */
+	         .navbar a:hover, .dropdown:hover .dropbtn {
+	             background-color: red;
+	         }
+
+	     /* Dropdown content (hidden by default) */
+	     .dropdown-content {
+	         display: none;
+	         position: absolute;
+	         background-color: #f9f9f9;
+	         min-width: 160px;
+	         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	         z-index: 1;
+	     }
+
+	         /* Links inside the dropdown */
+	         .dropdown-content a {
+	             float: none;
+	             color: black;
+	             padding: 12px 16px;
+	             text-decoration: none;
+	             display: block;
+	             text-align: left;
+	         }
+
+	             /* Add a grey background color to dropdown links on hover */
+	             .dropdown-content a:hover {
+	                 background-color: #ddd;
+	             }
+
+	     /* Show the dropdown menu on hover */
+	     .dropdown:hover .dropdown-content {
+	         display: block;
+	     }
+
+	  .button {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: red;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+	      table.center {
+	          margin-left: auto;
+	          margin-right: auto;
+	          width: 70%;
+	      }
+</style>
+    <script src="../JS/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="../JS/cust_js.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
           <div class="header">
-        <h1>Stock Management</h1>
-        </div>
+        <div class="navbar">
+  <a href="#home">Home</a>
+  <div class="dropdown">
+    <button class="dropbtn">Customers
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Customer/Customer.aspx">Customer</a>
+      <a href="/Customer/viewUser.aspx">View Customers</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Suppliers
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Supplier/Newsupplier.aspx">New Supplier</a>
+      <a href="/Supplier/EditSupplier.aspx">Edit Supplier</a>
+      <a href="/Supplier/ListSupplier.aspx">List Suppliers</a>
+      <a href="/Supplier/Deletesupplier.aspx">Delete Supplier</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Products
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Product/Addprodut.aspx">New Product</a>
+      <a href="/Product/editprodut.aspx">Edit Product</a>
+       <a href="/Product/deleteprodut.aspx">Delete Product</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Category
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/Category/category.aspx">Category</a>
+    </div>
+  </div>
+ <div class="dropdown">
+    <button class="dropbtn">Reports
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Customer Reports</a>
+      <a href="#">Product Report</a>
+     
+    </div>
+  </div>
+ <div class="login-container">
+     <asp:Button ID="btn" runat="server" Text="Logout" CssClass="button" />
+     
+</div>
+ 
         
-        <div class="container">
-           <nav>
-		<ul class="mcd-menu">
-            <li>
-				<a href="" class="active">
-					<i class="fa fa-edit"></i>
-					<strong>Home</strong>
-					
-				</a>
-			</li>
-			<li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Suppliers</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>New Supplier</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Edit Supplier</a>
-					</li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Delete Supplier</a></li>
-					<li><a href="#"><i class="fa fa-certificate"></i>Dealer List</a></li>
-				</ul>
-			</li>
-            <li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Products</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>New Product</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Edit Product</a>
-					</li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Delete Product</a></li>
-				</ul>
-			</li>
-              <li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Customers</strong>
-				</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"></i>Customers</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>View Customer</a>
-					</li>
-					
-				</ul>
-			</li>
-            	<li>
-				<a href="">
-					<i class="fa fa-comments-o"></i>
-					<strong>Category</strong>
-				</a>
-                    <ul>
-					<li><a href="#"><i class="fa fa-globe"></i>Products</a></li>
-					<li>
-						<a href="#"><i class="fa fa-group"></i>Suppliers</a>
-					</li>
-					
-				</ul>
-				
-			</li>
-            
-            
-			<li>
-				<a href="">
-					<i class="fa fa-picture-o"></i>
-					<strong>Reports</strong>
-				</a>
-			</li>
-			
-		</ul>
-	</nav>
+        
+       
 
         </div>
         
         <div id = "section">
 
          <div style="margin:10px 50px 10px 150px;">
-     <table class="tbcust">
+     <table class="center">
       <tr>
        <th class="tbcust_th" colspan="4">Customer Details : </th>
       </tr>

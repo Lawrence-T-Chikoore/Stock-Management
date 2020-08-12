@@ -1,0 +1,38 @@
+﻿.tbprod {
+    border-collapse: collapse;
+}
+
+.tbprod_th {
+    background: #2E9AFE;
+    color: #ffffff;
+    padding: 7px 10px 7px 10px;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: 1px solid #2E9AFE;
+}
+
+.tbprod_td1 {
+    background: #87cefa;
+    color: #ffffff;
+    padding: 3px 10px 3px 10px;
+    border: 1px solid #2E9AFE;
+    width: 200px;
+}
+
+.tbprod_td2 {
+    padding: 3px 10px 3px 10px;
+    border: 1px solid #2E9AFE;
+}
+
+.text_prod {
+    padding: 3px 10px 3px 10px;
+    width: 250px;
+}
+
+.btn_submit {
+    background: #800080;
+    color: #ffffff;
+    padding: 7px 10px 7px 10px;
+    border: 1px solid #800080;
+}
