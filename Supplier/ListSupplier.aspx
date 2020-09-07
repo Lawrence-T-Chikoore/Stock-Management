@@ -198,7 +198,7 @@ table, th, td {
     </button>
     <div class="dropdown-content">
       <a href="/Customer/Customer.aspx">Customer</a>
-      <a href="/Customer/viewUser.aspx">View Customers</a>
+      <a href="/Customer/viewcustomer.aspx">View Customers</a>
     </div>
   </div>
  <div class="dropdown">
@@ -217,9 +217,9 @@ table, th, td {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/Product/Addprodut.aspx">New Product</a>
-      <a href="/Product/editprodut.aspx">Edit Product</a>
-       <a href="/Product/deleteprodut.aspx">Delete Product</a>
+      <a href="/Product/Addproduct.aspx">New Product</a>
+      <a href="/Product/editproduct.aspx">Edit Product</a>
+       <a href="/Product/deleteproduct.aspx">Delete Product</a>
     </div>
   </div>
  <div class="dropdown">
@@ -235,8 +235,8 @@ table, th, td {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Customer Reports</a>
-      <a href="#">Product Report</a>
+      <a href="/Reports/customerreports.aspx">Customer Reports</a>
+      <a href="/Reports/productreports.aspx">Product Report</a>
      
     </div>
   </div>
@@ -245,6 +245,9 @@ table, th, td {
      
 </div>
  
+        
+        
+      
 
         </div>
         

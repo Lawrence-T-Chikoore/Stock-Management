@@ -11,20 +11,23 @@ namespace Stock_Management.Supplier
 {
     public partial class EditSupplier : System.Web.UI.Page
     {
+      
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
                 //Request.QueryString["dealerID"] = "0";
-                if (Request.QueryString["dealerid"] != null ) 
+                if (Request.QueryString["dealerID"] != null)
                 {
-                    string id = Request.QueryString["dealerid"].ToString();
-                    Get_Dealer_With_ID(id);
+                    string ID = Request.QueryString["dealerID"].ToString();
+                    Get_Dealer_With_ID(ID);
                 }
                 else
                 {
                     Reset();
-                    
                 }
-            
+            }
+
         }
          public void Get_Dealer_With_ID(string Id)
         {
@@ -122,7 +125,7 @@ namespace Stock_Management.Supplier
         {
             SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
             SqlCommand cmd = new SqlCommand();
-            cmd = new SqlCommand("insert into Dealers(dealerid,dealername,dealeraddress,dealerlandline,dealertel)values(@dealerid,@dealername,@dealeraddress,@dealerlandline,@dealertel)", conn);
+            cmd = new SqlCommand("update  Dealers set dealername = @dealername, dealeraddress = @dealeraddress, dealerlandline = @dealerlandline, dealertel= @dealertel  where  dealerid = @dealerid", conn);
             cmd.Parameters.AddWithValue("@dealerid", txt_dealer_id.Text.Trim());
             cmd.Parameters.AddWithValue("@dealername", txt_dealer_name.Text.Trim());
             cmd.Parameters.AddWithValue("@dealeraddress", daddress.Text.Trim());

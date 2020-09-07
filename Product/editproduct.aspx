@@ -121,7 +121,7 @@ table, th, td {
     </button>
     <div class="dropdown-content">
       <a href="/Customer/Customer.aspx">Customer</a>
-      <a href="/Customer/viewUser.aspx">View Customers</a>
+      <a href="/Customer/viewcustomer.aspx">View Customers</a>
     </div>
   </div>
  <div class="dropdown">
@@ -140,9 +140,9 @@ table, th, td {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/Product/Addprodut.aspx">New Product</a>
-      <a href="/Product/editprodut.aspx">Edit Product</a>
-       <a href="/Product/deleteprodut.aspx">Delete Product</a>
+      <a href="/Product/Addproduct.aspx">New Product</a>
+      <a href="/Product/editproduct.aspx">Edit Product</a>
+       <a href="/Product/deleteproduct.aspx">Delete Product</a>
     </div>
   </div>
  <div class="dropdown">
@@ -158,8 +158,8 @@ table, th, td {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Customer Reports</a>
-      <a href="#">Product Report</a>
+      <a href="/Reports/customerreports.aspx">Customer Reports</a>
+      <a href="/Reports/productreports.aspx">Product Report</a>
      
     </div>
   </div>
@@ -170,6 +170,7 @@ table, th, td {
  
         
         
+      
 
         </div>
         
@@ -222,12 +223,12 @@ table, th, td {
    <td class="tbprod_td1">Product Category</td>
    <td class="tbprod_td2"><asp:DropDownList ID="ddl_prod_category_edit" runat="server" 
            CssClass="text_prod" Width="275px" AutoPostBack="True" 
-           onselectedindexchanged="ddl_prod_category_edit_SelectedIndexChanged1" ></asp:DropDownList></td>
+           ></asp:DropDownList></td>
   </tr>
   <tr>
    <td class="tbprod_td1">Product Dealer </td>
    <td class="tbprod_td2"><asp:DropDownList ID="ddl_prod_dealer_edit" runat="server" 
-           CssClass="text_prod" Width="275px" Enabled="False"></asp:DropDownList></td>
+           CssClass="text_prod" Width="275px" Enabled="False" OnSelectedIndexChanged="ddl_prod_dealer_edit_SelectedIndexChanged"></asp:DropDownList></td>
   </tr>
  </table>
  <div style="margin:20px 50px 10px 215px;">
@@ -237,7 +238,7 @@ table, th, td {
          onclick="Btn_Update_Click" />&nbsp;&nbsp;&nbsp;
   <asp:Button ID="Btn_Edit" runat="server" Text=" Edit " CssClass="btn_submit" 
          onclick="Btn_Edit_Click" />&nbsp;&nbsp;&nbsp;
-  <asp:Button ID="Btn_Cancel" runat="server" Text=" Cancel " CssClass="btn_submit" OnClick="Btn_Cancel_Click" />
+  <asp:Button ID="Btn_Cancel" runat="server" Text=" Cancel " CssClass="btn_submit"  />
  </div>
 </div>
 

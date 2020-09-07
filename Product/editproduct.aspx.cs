@@ -11,16 +11,17 @@ namespace Stock_Management.Product
 {
     public partial class editproduct : System.Web.UI.Page
     {
+        string cname, dname;
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["ProdID"] != null)
                 {
                     ReadOnly();
                     Get_prod_ID();
-                   
+
                     Btn_Update.Visible = false;
                     Btn_Get_Product.Visible = false;
                 }
@@ -100,7 +101,7 @@ namespace Stock_Management.Product
         protected void Btn_Edit_Click(object sender, EventArgs e)
         {
             Get_prod_ID();
-      
+
             ReadOnlyfalse();
             //DDL_Category();
             //DDL_Dealer();
@@ -111,14 +112,15 @@ namespace Stock_Management.Product
         }
         public void Get_prod_ID()
         {
-            SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Product ", conn);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable ds = new DataTable();
-            da.Fill(ds);
 
             if (Request.QueryString["ProdID"] != null)
             {
+                SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE prod_id LIKE @prod_id +'%'", conn);
+                cmd.Parameters.AddWithValue("@prod_id", txt_product_id.Text.Trim());
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable ds = new DataTable();
+                da.Fill(ds); ;
 
                 if (ds.Rows.Count > 0)
                 {
@@ -133,32 +135,175 @@ namespace Stock_Management.Product
                     txt_product_quantity.Text = ds.Rows[0]["prod_item_quantity"].ToString();
                     string cid = ds.Rows[0]["prod_item_categoryid"].ToString();
 
-                    DataSet ds_cid = new DataSet();
 
+                    SqlConnection con = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
+                    SqlCommand cd = new SqlCommand("SELECT * FROM updateprod'", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(cd);
+                    DataTable ds_cid = new DataTable();
+                    sda.Fill(ds);
+
+                    if (ds_cid.Rows.Count > 0)
+                    {
+                        cname = ds_cid.Rows[0]["categoryname"].ToString();
+                        dname = ds_cid.Rows[0]["dealername"].ToString();
+                        Fill_Category(cname);
+                        ddl_prod_dealer_edit.Items.Insert(0, new ListItem(dname));
+                        ddl_prod_dealer_edit.SelectedIndex = 0;
+                    }
+                }
+
+            }
+        }
+        public void BackgroundColor_ReadOnly()
+        {
+            txt_product_id.Style.Add("background", "#dddddd");
+            txt_product_name.Style.Add("background", "#dddddd");
+            txt_prod_company_name.Style.Add("background", "#dddddd");
+            txt_prod_manufacture_date.Style.Add("background", "#dddddd");
+            txt_prod_manufacture_exp_date.Style.Add("background", "#dddddd");
+            txt_product_serial_number.Style.Add("background", "#dddddd");
+            txt_product_batch_number.Style.Add("background", "#dddddd");
+            txt_product_cost.Style.Add("background", "#dddddd");
+            txt_product_quantity.Style.Add("background", "#dddddd");
+            ddl_prod_category_edit.Style.Add("background", "#dddddd");
+            ddl_prod_dealer_edit.Style.Add("background", "#dddddd");
+        }
+        public void BackgroundColor_White()
+        {
+            txt_product_id.Style.Add("background", "#dddddd");
+            txt_product_name.Style.Add("background", "#ffffff");
+            txt_prod_company_name.Style.Add("background", "#ffffff");
+            txt_prod_manufacture_date.Style.Add("background", "#ffffff");
+            txt_prod_manufacture_exp_date.Style.Add("background", "#ffffff");
+            txt_product_serial_number.Style.Add("background", "#ffffff");
+            txt_product_batch_number.Style.Add("background", "#ffffff");
+            txt_product_cost.Style.Add("background", "#ffffff");
+            txt_product_quantity.Style.Add("background", "#ffffff");
+            ddl_prod_category_edit.Style.Add("background", "#ffffff");
+            ddl_prod_dealer_edit.Style.Add("background", "#ffffff");
+        }
+        protected void Btn_Get_Product_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE prod_id LIKE @prod_id +'%'", con);
+            cmd.Parameters.AddWithValue("@prod_id", txt_product_id.Text.Trim());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable ds_prd = new DataTable();
+            da.Fill(ds_prd);
+
+            if (ds_prd.Rows.Count > 0)
+            {
+                txt_product_id.Text = ds_prd.Rows[0]["prod_id"].ToString();
+                txt_product_name.Text = ds_prd.Rows[0]["prod_name"].ToString();
+                txt_prod_company_name.Text = ds_prd.Rows[0]["prod_comp_name"].ToString();
+                txt_prod_manufacture_date.Text = ds_prd.Rows[0]["prod_manu_date"].ToString();
+                txt_prod_manufacture_exp_date.Text = ds_prd.Rows[0]["prod_manu_exp_date"].ToString();
+                txt_product_serial_number.Text = ds_prd.Rows[0]["prod_item_serial_no"].ToString();
+                txt_product_batch_number.Text = ds_prd.Rows[0]["prod_item_batch_no"].ToString();
+                txt_product_cost.Text = ds_prd.Rows[0]["prod_item_cost"].ToString();
+                txt_product_quantity.Text = ds_prd.Rows[0]["prod_item_quantity"].ToString();
+                string cid = ds_prd.Rows[0]["prod_item_categoryid"].ToString();
+
+                SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
+                SqlCommand md = new SqlCommand("SELECT * FROM Dealers ", conn);
+                SqlDataAdapter sda = new SqlDataAdapter(md);
+                DataTable ds_cat = new DataTable();
+                sda.Fill(ds_cat);
+                
+                if (ds_cat.Rows.Count > 0)
+                {
+                    cname = ds_cat.Rows[0]["categoryname"].ToString();
+                    dname = ds_cat.Rows[0]["dealername"].ToString();
+                    Fill_Category(cname);
+                    Fill_Dealer(dname);
+                    ddl_prod_dealer_edit.Items.Insert(0, new ListItem(dname));
+                    ddl_prod_dealer_edit.SelectedIndex = 0;
 
                 }
+
+
+                ReadOnly();
+                BackgroundColor_ReadOnly();
+                Btn_Update.Visible = false;
+                Btn_Get_Product.Visible = false;
+                Btn_add_product.Visible = true;
+                Btn_Edit.Visible = true;
+                Btn_Cancel.Visible = true;
+            }
+
+        }
+        protected void Btn_Update_Click(object sender, EventArgs e)
+        {
+            
+            Btn_add_product.Visible = true;
+            Btn_Edit.Visible = true;
+            Btn_Cancel.Visible = true;
+            Btn_Get_Product.Visible = false;
+            Btn_Update.Visible = false;
+            ReadOnly();
+            BackgroundColor_ReadOnly();
+        }
+
+        public void Fill_Category(string catergoryname)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
+            SqlCommand md = new SqlCommand("SELECT * FROM Category", conn);
+            SqlDataAdapter da = new SqlDataAdapter(md);
+            DataTable ds_cid_cname = new DataTable();
+            da.Fill(ds_cid_cname);
+            if (ds_cid_cname.Rows.Count > 0)
+            {
+                ddl_prod_category_edit.DataSource = ds_cid_cname;
+                ddl_prod_category_edit.DataTextField = "categoryname";
+                ddl_prod_category_edit.DataValueField = "categoryid";
+                ddl_prod_category_edit.DataBind();
+                ddl_prod_category_edit.Items.Insert(0, new ListItem(catergoryname));
+                ddl_prod_category_edit.SelectedIndex = 0;
+
+            }
+        }
+        public void Fill_Dealer(string dealername)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
+            SqlCommand md = new SqlCommand("SELECT * FROM Dealers ", conn);
+            SqlDataAdapter da = new SqlDataAdapter(md);
+            DataTable ds_get_dealer = new DataTable();
+            da.Fill(ds_get_dealer);
+            if (ds_get_dealer.Rows.Count > 0)
+            {
+                ddl_prod_dealer_edit.DataSource = ds_get_dealer;
+                ddl_prod_dealer_edit.DataTextField = "dealername";
+                ddl_prod_dealer_edit.DataValueField = "dealerid";
+                ddl_prod_dealer_edit.DataBind();
+                ddl_prod_dealer_edit.Items.Insert(0, new ListItem(dealername));
+                ddl_prod_dealer_edit.SelectedIndex = 0;
+                ddl_prod_dealer_edit.Enabled = true;
+                return;
             }
         }
 
-        protected void ddl_prod_category_edit_SelectedIndexChanged1(object sender, EventArgs e)
+        protected void ddl_prod_dealer_edit_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SqlConnection conn = new SqlConnection("Data Source=DESKTOP-L8I60LH\\KINGBELL;Initial Catalog=StockM;Integrated Security=True");
+            SqlCommand md = new SqlCommand("SELECT * FROM Dealers WHERE dealerid", conn);
+            SqlDataAdapter da = new SqlDataAdapter(md);
+            DataTable ds_get_dealer = new DataTable();
+            da.Fill(ds_get_dealer);
+            if (ds_get_dealer.Rows.Count > 0)
+            {
+                ddl_prod_dealer_edit.DataSource = ds_get_dealer;
+                ddl_prod_dealer_edit.DataTextField = "dealername";
+                ddl_prod_dealer_edit.DataValueField = "dealerid";
+                ddl_prod_dealer_edit.DataBind();
+                ddl_prod_dealer_edit.Items.Insert(0, new ListItem(" Select Dealer ", "0"));
+                ddl_prod_dealer_edit.SelectedIndex = 0;
+                ddl_prod_dealer_edit.Enabled = true;
+                return;
+            }
 
         }
 
-        protected void Btn_Update_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Btn_Get_Product_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Btn_Cancel_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
 
